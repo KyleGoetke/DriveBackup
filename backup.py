@@ -38,5 +38,9 @@ while True:
                 total_time = timedelta(seconds=int(time.time() - start_time))
                 print(f"# Files copied, this backup took {total_time} #")
 
+#! robocopy info:
 #! https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy
+#! https://adamtheautomator.com/robocopy/
+#! https://www.pdq.com/blog/hitchhikers-guide-to-robocopy/
+#! https://www.hackbuddies.com/robocopy-how-to-copy-massive-amounts-of-data/
 #! https://www.techrepublic.com/article/how-to-quickly-back-up-just-your-data-in-windows-10-with-robocopys-multi-threaded-feature/
