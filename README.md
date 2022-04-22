@@ -1,8 +1,14 @@
-# RemovableDriveBackup
+# DriveBackup
 
-This script detects any connected removable drives and, given confirmation by the user, copies all contents of a drive to a predetmined folder.
+This script searches connected drives and, once the target is found (`E:\` by default), all contents of the drive are copied to a predetermined folder.
 
 ## Updates
+
+#### v0.3 - April 22, 2022
+
+Adjusted drive checking, only proceeds if `E:\` is detected
+
+Added verbose output + time delays
 
 #### v0.2 - April 20, 2022
 
