@@ -1,5 +1,5 @@
 # Created by Kyle Goetke
-# v0.3 - April 22, 2022
+# v0.4 - April 23, 2022
 
 import win32api
 import time
@@ -8,30 +8,32 @@ import subprocess
 import sys
 import os
 
+target_drive = "E:\\"
+
 print("--------")
-print("E:\\ not located. Waiting for drive.")
+print(f"{target_drive} not located. Waiting for drive.")
 print("--------")
 while True:
     time.sleep(3)
     drive_list = win32api.GetLogicalDriveStrings()
     drive_list = drive_list.split("\x00")[0:-1]  # the last element is ""
-    print("Checking drives:")
-    time.sleep(1)
+    #? print("Checking drives:")
+    #? time.sleep(1)
     for letter in drive_list:
         drive = "{0}".format(letter)
-        if drive != "E:\\":
-            print(" ", drive)
-            time.sleep(1)
+        if drive != target_drive:
+            #? print(" ", drive)
+            #? time.sleep(1)
             continue
-        elif drive == "E:\\":
-            print(" ", drive)
-            time.sleep(0.25)
+        elif drive == target_drive:
+            #? print(" ", drive)
+            #? time.sleep(0.25)
             user_check = input(f"\nDo you want to copy from {drive} (Y/N)?\n> ").upper()
             if user_check[0] == "Y":
                 src_path = f"{drive}"
                 now = datetime.now()
-                # current_time = now.strftime("%b_%d_%Y_%H_%M") # 24 hr time
-                current_time = now.strftime("%b_%d_%Y_%I_%M_%p") # 12 hr time
+                current_time = now.strftime("%b_%d_%Y_%H_%M") # 24 hr time
+                #? current_time = now.strftime("%b_%d_%Y_%I_%M_%p") # 12 hr time
                 custom_path = input("\nWould you like to name the destination folder (Y/N)?\n> ").upper()
                 if custom_path[0] == "Y":
                     custom_path = input("\nEnter folder name:\n> ")
@@ -55,8 +57,8 @@ while True:
         else:
             print("BIG ISSUE!!!")
             print("Detected drive {drive} caught by else")
-    print("All drives checked.")
-    time.sleep(1)
-    print("Starting new check in 15 seconds.")
-    time.sleep(3)
-    print("--------")
+    #? print("All drives checked.")
+    #? time.sleep(1)
+    #? print("Starting new check in 15 seconds.")
+    #? time.sleep(3)
+    #? print("--------")
