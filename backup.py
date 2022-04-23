@@ -24,14 +24,20 @@ while True:
             time.sleep(1)
             continue
         elif drive == "E:\\":
-            print("  E:\\")
+            print(" ", drive)
             time.sleep(0.25)
             user_check = input(f"\nDo you want to copy from {drive} (Y/N)?\n> ").upper()
             if user_check[0] == "Y":
                 src_path = f"{drive}"
                 now = datetime.now()
-                current_time = now.strftime("%B_%d_%Y_%H.%M.%S")
-                dest_path = f"D:\\NEW_BACKUP_{current_time}\\"
+                # current_time = now.strftime("%b_%d_%Y_%H_%M") # 24 hr time
+                current_time = now.strftime("%b_%d_%Y_%I_%M_%p") # 12 hr time
+                custom_path = input("\nWould you like to name the destination folder (Y/N)?\n> ").upper()
+                if custom_path[0] == "Y":
+                    custom_path = input("\nEnter folder name:\n> ")
+                    dest_path = f"D:\\{custom_path}_{current_time}\\"
+                else:
+                    dest_path = f"D:\\NEW_BACKUP_{current_time}\\"
                 try:
                     robocopy_output = subprocess.call(f"robocopy {src_path} {dest_path} /E /V /COPYALL /DCOPY:DAT /R:10 /W:5", shell=True)
                     if robocopy_output != 1:
